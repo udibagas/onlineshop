@@ -1,0 +1,35 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+.main-content {
+	margin-top: 40px;
+	min-height: 320px;
+}
+
+.footer {
+	background-color: #eee;
+	padding: 40px 0 40px 0;
+	margin-top: 40px;
+}
+
+.footer-end {
+	background-color: #111;
+	color: #eee;
+	margin-bottom: 0;
+	padding: 10px 0 0px 0;
+	font-size: .9em;
+}
+
+.centered {
+	text-align: center;
+}
+
+a.fa:hover {
+	text-decoration: none;
+}
+
+a, a:hover {
+	color: #3c763d;
+}
