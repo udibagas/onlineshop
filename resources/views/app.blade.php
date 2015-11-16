@@ -14,7 +14,8 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
+ 
     <!-- Custom styles for this template -->
     <link href="/css/app.css" rel="stylesheet">
 
@@ -56,6 +57,7 @@
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
 
     @yield('script')
   </body>

@@ -1,4 +1,4 @@
-{!! Form::open(['url' => $url, 'class' => 'form-horizontal', 'files' => true, 'method' => $method]) !!}
+{!! Form::model($product, ['url' => $url, 'class' => 'form-horizontal', 'files' => true, 'method' => $method]) !!}
 
 	<div class="form-group">
 		{!! Form::label('name', 'Name:', ['class' => 'col-md-2 control-label']) !!}
@@ -22,9 +22,9 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('image', 'Image:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('img', 'Image:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::file('image') !!}	
+			{!! Form::file('img') !!}	
 		</div>
 	</div>
 

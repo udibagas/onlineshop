@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Product;
 
+use Request;
+
 class ProductController extends Controller
 {
     /**
@@ -29,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product/create');
+        return view('product/create', ['product' => new Product]);
     }
 
     /**
@@ -40,13 +42,22 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        // $request->set('image')
+        $data = $request->all();
 
-        $p = Product::create($request->all());
+        if ($request->hasFile('img')) {
+            
+            $file = $request->file('img');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
 
-        if ($request->hasFile('image')) {
-            // $request->file('image')->move('uploads', time().'.png');
+            $data['image'] = $fileName;
+
+
         }
+
+        $p = Product::create($data);
+
 
         return redirect('product/manage');
 
@@ -109,7 +120,32 @@ class ProductController extends Controller
     public function manage()
     {
         return view('product/manage', [
-            'products' => Product::paginate(10)
+            'products' => Product::all()
         ]);
+    }
+
+    public function getList()
+    {
+        $r              = Request::all();
+        
+        $sortColumn     = $r['columns'][$r['order'][0]['column']]['data'];
+        $sortOrder      = $r['order'][0]['dir'];
+        $searchValue    = '%'.$r['search']['value'].'%';
+
+        $products = Product::all();
+
+        $filtered = Product::where('name', 'LIKE', $searchValue)
+            ->orWhere('description', 'LIKE', $searchValue)
+            ->orWhere('price', 'LIKE', $searchValue)
+            ->orderBy($sortColumn, $sortOrder);
+
+        return [
+            'draw'              => $r['draw'],
+            'recordsTotal'      => count($filtered->get()),
+            'recordsFiltered'   => count($filtered->get()),
+            'data'              => $filtered->limit($r['length'])
+                                        ->offset($r['start'])
+                                        ->get()
+        ];
     }
 }

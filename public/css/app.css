@@ -33,3 +33,12 @@ a.fa:hover {
 a, a:hover {
 	color: #3c763d;
 }
+
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+thead {
+	background-color: #dff0d8;
+	border-top: solid 2px #ddd;
+}

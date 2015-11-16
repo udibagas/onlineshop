@@ -34,13 +34,16 @@
 					</div>
 					<div id="collapse{{ $f->id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ $f->id }}">
 						<div class="panel-body">
-							{{ $f->answer }}
+							{!! nl2br($f->answer) !!}
 						</div>
 
 						<div class="panel-footer">
 							{!! Form::open(['method' => 'DELETE', 'url' => '/faq/'.$f->id]) !!}
-								<a href="/faq/{{ $f->id }}/edit" class="btn btn-success btn-xs">Edit</a> 
-								{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs delete']) !!}
+								<div class="btn-group pull-right">
+									<a href="/faq/{{ $f->id }}/edit" class="btn btn-success btn-xs">Edit</a> 
+									{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs delete']) !!}
+								</div>
+								<div class="clearfix"></div>
 							{!! Form::close() !!}
 						</div>
 					</div>

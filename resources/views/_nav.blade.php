@@ -21,7 +21,7 @@
                 
                 @if (Auth::check())
 
-                <li><a href="/user/profile">Profile</a></li>
+                <li><a href="/user/profile">Profile ({{ Auth::user()->name }})</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
 
                 @else

@@ -11,6 +11,10 @@
 |
 */
 
+/**
+* 
+*/
+
 Route::get('/', function () {
     return view('home');
 });
@@ -20,11 +24,13 @@ Route::get('/home', function () {
 });
 
 Route::get('product/manage', 'ProductController@manage');
+Route::get('product/list', 'ProductController@getList');
 
 Route::resource('faq', 'FaqController');
 Route::resource('page', 'PageController');
 Route::resource('post', 'PostController');
 Route::resource('product', 'ProductController');
+Route::resource('review', 'ReviewController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
