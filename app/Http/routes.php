@@ -31,6 +31,7 @@ Route::resource('page', 'PageController');
 Route::resource('post', 'PostController');
 Route::resource('product', 'ProductController');
 Route::resource('review', 'ReviewController');
+Route::resource('discussion', 'DiscussionController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

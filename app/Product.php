@@ -15,6 +15,11 @@ class Product extends Model
     	return $this->hasMany('App\Review');
     }
 
+    public function discussions()
+    {
+    	return $this->hasMany('App\Discussion');
+    }
+
     // public function user()
     // {
     // 	return $this->belongsTo('App\User');

@@ -19,7 +19,10 @@
 					</a>
 				</div>
 				<div class="media-body">
-					<h4 class="media-heading">{{ $review->user->name }}</h4>
+					<h4 class="media-heading">
+						{{ $review->user->name }}
+						<small class="pull-right text-muted">{{ $review->updated_at }}</small>
+					</h4>
 					@for ($i=0;$i < $review->star;$i++)
 						<span class="fa fa-star"></span>
 					@endfor
@@ -33,25 +36,27 @@
 
 			@endforeach
 
-			<!-- <br /> -->
+			<br />
 
 			{!! Form::open(['class' => 'form-vertical', 'url' => 'review', 'method' => 'POST']) !!}
+				
 				{!! Form::hidden('product_id', $product->id) !!}
 
-				<p>
-					{!! Form::text('star', null, ['class' => 'form-control', 'placeholder' => 'Star (1 - 5)']) !!}
-				</p>
-				<p>
-					{!! Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Your Comment', 'rows' => 3]) !!}
-				</p>
+				<p>{!! Form::text('star', null, ['class' => 'form-control', 'placeholder' => 'Star (1 - 5)']) !!}</p>
+
+				<p>{!! Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Your Comment', 'rows' => 3]) !!}</p>
 
 				<p>{!! Form::submit('Send', ['class' => 'btn btn-success']) !!}</p>
+			
 			{!! Form::close() !!}
 
 		</div>
+
 		<div role="tabpanel" class="tab-pane" id="discussion">
+			
 			<br />
-			@for ($i=1;$i<=3;$i++)
+			
+			@foreach ($product->discussions as $d)
 
 			<div class="media">
 				<div class="media-left">
@@ -60,12 +65,26 @@
 					</a>
 				</div>
 				<div class="media-body">
-					<h4 class="media-heading">Media heading</h4>
-					lorem ispusm lorem ispusm lorem ispusm lorem ispusmlorem ispusm
+					<h4 class="media-heading">{{ $d->user->name }}</h4>
+					<p>{{ $d->comment }}</p>
 				</div>
 			</div>
 
-			@endfor
+			@endforeach
+
+			<br />
+
+			{!! Form::open(['class' => 'form-vertical', 'url' => 'discussion', 'method' => 'POST']) !!}
+				
+				{!! Form::hidden('product_id', $product->id) !!}
+
+				<p>{!! Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Your Comment', 'rows' => 3]) !!}</p>
+
+				<p>{!! Form::submit('Send', ['class' => 'btn btn-success']) !!}</p>
+			
+			{!! Form::close() !!}
+		
 		</div>
+
 	</div>
 </div>
