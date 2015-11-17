@@ -25,7 +25,7 @@ class ReviewRequest extends Request
     public function rules()
     {
         return [
-            'star'          => 'required',
+            'star'          => 'required|numeric|min:1|max:5',
             'comment'       => 'required',
             'product_id'    => 'required'
         ];

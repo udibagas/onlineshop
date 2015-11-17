@@ -19,14 +19,21 @@
 					</a>
 				</div>
 				<div class="media-body">
-					<h4 class="media-heading">{{ $review->star }}</h4>
-					{{ $review->comment }}
+					<h4 class="media-heading">{{ $review->user->name }}</h4>
+					@for ($i=0;$i < $review->star;$i++)
+						<span class="fa fa-star"></span>
+					@endfor
+					@for ($i=5;$i > $review->star;$i--)
+						<span class="fa fa-star-o"></span>
+					@endfor
+					
+					<p>{{ $review->comment }}</p>
 				</div>
 			</div>
 
 			@endforeach
 
-			<br />
+			<!-- <br /> -->
 
 			{!! Form::open(['class' => 'form-vertical', 'url' => 'review', 'method' => 'POST']) !!}
 				{!! Form::hidden('product_id', $product->id) !!}
