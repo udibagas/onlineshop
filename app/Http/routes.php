@@ -25,6 +25,7 @@ Route::get('/home', function () {
 
 Route::get('product/manage', 'ProductController@manage');
 Route::get('product/list', 'ProductController@getList');
+Route::get('store/list', 'StoreController@getList');
 
 Route::resource('faq', 'FaqController');
 Route::resource('page', 'PageController');
@@ -32,6 +33,8 @@ Route::resource('post', 'PostController');
 Route::resource('product', 'ProductController');
 Route::resource('review', 'ReviewController');
 Route::resource('discussion', 'DiscussionController');
+Route::resource('store', 'StoreController');
+Route::resource('user', 'UserController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

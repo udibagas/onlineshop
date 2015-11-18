@@ -10,7 +10,7 @@
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="review">
 			<br />
-			@foreach ($product->reviews as $review)
+			@foreach ($product->reviews as $r)
 
 			<div class="media">
 				<div class="media-left">
@@ -19,24 +19,23 @@
 					</a>
 				</div>
 				<div class="media-body">
-					<h4 class="media-heading">
-						{{ $review->user->name }}
-						<small class="pull-right text-muted">{{ $review->updated_at }}</small>
-					</h4>
-					@for ($i=0;$i < $review->star;$i++)
+					<h4 class="media-heading">{{ $r->user->name }}</h4>
+					@for ($i=0;$i < $r->star;$i++)
 						<span class="fa fa-star"></span>
 					@endfor
-					@for ($i=5;$i > $review->star;$i--)
+					@for ($i=5;$i > $r->star;$i--)
 						<span class="fa fa-star-o"></span>
 					@endfor
 					
-					<p>{{ $review->comment }}</p>
+					<p>{{ $r->comment }}</p>
+					<small class="text-muted">{{ $r->updated_at->diffForHumans() }}</small>
 				</div>
+				<hr />
 			</div>
 
 			@endforeach
 
-			<br />
+			<!-- <br /> -->
 
 			{!! Form::open(['class' => 'form-vertical', 'url' => 'review', 'method' => 'POST']) !!}
 				
@@ -67,12 +66,12 @@
 				<div class="media-body">
 					<h4 class="media-heading">{{ $d->user->name }}</h4>
 					<p>{{ $d->comment }}</p>
+					<small class="text-muted">{{ $d->updated_at->diffForHumans() }}</small>
 				</div>
 			</div>
+			<hr />
 
 			@endforeach
-
-			<br />
 
 			{!! Form::open(['class' => 'form-vertical', 'url' => 'discussion', 'method' => 'POST']) !!}
 				

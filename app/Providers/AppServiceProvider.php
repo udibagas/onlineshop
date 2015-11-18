@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('_footer', function($view) {
         
-            $view->with('pageLink', \App\Page::all());
+            $view->with('pages', \App\Page::all());
         
         });
 

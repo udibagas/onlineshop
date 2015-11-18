@@ -13,7 +13,7 @@
 			<div class="col-md-4">
 				<ul class="list-unstyled">
 					<li><a href="/">Home</a></li>
-					@foreach ($pageLink as $p)
+					@foreach ($pages as $p)
 					<li><a href="/page/{{ $p->id }}">{{ $p->title }}</a></li>
 					@endforeach
 					<li><a href="/faq">FAQ</a></li>
