@@ -8,9 +8,9 @@
 	{!! Form::open(['class' => 'form-horizontal']) !!}
 
 		<div class="form-group">
-			{!! Form::label('name', 'Username:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('name', 'Name:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Username']) !!}
+				{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
 			</div>
 		</div>
 
@@ -40,7 +40,6 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				{!! Form::submit('Register', ['class' => 'btn btn-success']) !!}
-				<a href="/auth/login" class="btn btn-info">Login</a>
 			</div>
 		</div>
 

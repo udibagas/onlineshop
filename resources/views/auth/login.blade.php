@@ -32,7 +32,6 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				{!! Form::submit('Login', ['class' => 'btn btn-success']) !!}
-				<a href="/auth/register" class="btn btn-info">Register</a>
 				<a href="/password/email" class="btn btn-default">Forgot Password</a>
 
 			</div>
