@@ -10,7 +10,7 @@
 	<div class="form-group">
 		{!! Form::label('description', 'Description:', ['class' => 'col-md-2 control-label']) !!}	
 		<div class="col-md-10">
-			{!! Form::textarea('description', $product->description, ['class' => 'form-control', 'placeholder' => 'Product Description']) !!}
+			{!! Form::textarea('description', $product->description, ['class' => 'form-control', 'placeholder' => 'Product Description', 'rows' => 3]) !!}
 		</div>
 	</div>
 
