@@ -50,7 +50,15 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->update($request->all());
+        $data = $request->all();
+
+        if ($data['password'] == '') {
+            unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        $user->update($data);
 
         return redirect('user/'.$user->id.'/edit');
     }
