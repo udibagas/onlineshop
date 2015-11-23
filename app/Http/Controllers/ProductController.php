@@ -65,7 +65,6 @@ class ProductController extends Controller
 
             $data['image'] = $fileName;
 
-
         }
 
         $p = Product::create($data);
@@ -111,7 +110,20 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $product->update($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('img')) {
+            
+            $file = $request->file('img');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['image'] = $fileName;
+
+        }
+
+        $product->update($data);
 
         return redirect('product/'.$product->id);
     }

@@ -1,5 +1,3 @@
-<br />
-			
 @foreach ($product->discussions as $d)
 
 <div class="media">

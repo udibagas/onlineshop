@@ -1,4 +1,3 @@
-<br />
 @foreach ($product->reviews as $r)
 
 <div class="media">

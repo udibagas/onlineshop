@@ -9,8 +9,20 @@
 	<!-- Tab panes -->
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="review">
+
+			<br />
 			
-			@include('review.index')
+			@if (count($product->reviews))
+			
+				@include('review.index')
+
+			@else
+
+				<div class="alert alert-warning text-center">
+					<strong>Belum ada review</strong>
+				</div>
+
+			@endif
 
 			@if (Auth::check())
 			
@@ -25,8 +37,20 @@
 		</div>
 
 		<div role="tabpanel" class="tab-pane" id="discussion">
+
+			<br />
 			
-			@include('discussion.index')
+			@if (count($product->discussions))
+
+				@include('discussion.index')
+
+			@else
+
+				<div class="alert alert-warning text-center">
+					<strong>Belum ada diskusi</strong>
+				</div>
+
+			@endif
 
 			@if (Auth::check())
 				

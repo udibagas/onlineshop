@@ -43,7 +43,7 @@ thead {
 	border-top: solid 2px #ddd;
 }
 
-.img-thumbnail, .thumbnail, .well {
+.img-thumbnail, .thumbnail, .well, .panel, .alert {
 	border-radius: 0;
 }
 

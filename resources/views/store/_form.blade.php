@@ -8,9 +8,23 @@
 	</div>
 
 	<div class="form-group">
+		{!! Form::label('tagline', 'Tagline:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::text('tagline', $store->tagline, ['class' => 'form-control', 'placeholder' => 'Tagline']) !!}	
+		</div>
+	</div>
+
+	<div class="form-group">
 		{!! Form::label('description', 'Description:', ['class' => 'col-md-2 control-label']) !!}	
 		<div class="col-md-10">
 			{!! Form::textarea('description', $store->description, ['class' => 'form-control', 'placeholder' => 'Store Description', 'rows' => 3]) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('lokasi_id', 'Lokasi:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('lokasi_id', App\Lokasi::listKota(), $store->lokasi_id, ['class' => 'form-control', 'id' => 'lokasi_id']) !!}	
 		</div>
 	</div>
 
@@ -38,7 +52,7 @@
 	<div class="form-group">
 		{!! Form::label('status', 'Status:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('status', $store->statuses, $store->status, ['class' => 'form-control', 'placeholder' => 'Email']) !!}	
+			{!! Form::select('status', $store->statuses, $store->status, ['class' => 'form-control']) !!}	
 		</div>
 	</div>
 
@@ -52,3 +66,17 @@
 
 
 {!! Form::close() !!}
+
+@section('css')
+<link href="/select2/dist/css/select2.min.css" rel="stylesheet">
+@stop
+
+@section('script')
+
+<script type="text/javascript" src="/select2/dist/js/select2.min.js"></script>
+
+<script type="text/javascript">
+	$('#lokasi_id').select2();
+</script>
+
+@stop

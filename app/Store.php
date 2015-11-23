@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
-    protected $fillable = ['name', 'description', 'address', 'phone', 'email', 'status', 'user_id'];
+    protected $fillable = [
+    	'name', 
+    	'description', 
+    	'address', 
+    	'phone', 
+    	'email', 
+    	'status',
+    	'user_id',
+    	'lokasi_id',
+    	'tagline'
+    ];
 
     public $statuses = [
     	1 => 'Active',
@@ -17,6 +27,11 @@ class Store extends Model
     public function user()
     {
     	return $this->belongsTo('App\User');
+    }
+
+    function lokasi()
+    {
+    	return $this->belongsTo('App\Lokasi');
     }
 
     public function products()

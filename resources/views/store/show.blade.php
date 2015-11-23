@@ -3,16 +3,54 @@
 
 @section('content')
 
-	<h1>{{ $store->name }}</h1>
+	<h1>{{ $store->name }} <small>-- {{ $store->tagline }}</small></h1>
+	<hr />
+	<blockquote>{!! nl2br($store->description) !!}</blockquote>
+	<hr />
+	<div class="text-muted">
+		<span class="fa fa-home"></span> {!! $store->address !!} |  
+		<a href="/lokasi/{{ $store->lokasi->id }}"><span class="fa fa-map-marker"></span> {{ $store->lokasi->nama }}</a> | 
+		 
+		<span class="fa fa-phone"></span> {{ $store->phone }} | 
+		<span class="fa fa-mobile"></span> {{ $store->phone }} | 
+		<span class="fa fa-envelope-o"></span> <a href="mailto:{{ $store->email }}">{{ $store->email }}</a> | 
+		<span class="fa fa-facebook"></span> {{ $store->phone }} | 
+		<span class="fa fa-twitter"></span> {{ $store->phone }} | 
+		<span class="fa fa-globe"></span> {{ $store->phone }}
+	</div>
 	<hr />
 
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-4">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Notes</h3>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+			</div>
+
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Etalase</h3>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+			</div>
 			
-			Etalase
 
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-8">
 
 			<div class="well">
 				<div class="row">

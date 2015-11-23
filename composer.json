@@ -9,7 +9,6 @@
         "laravel/framework": "5.1.*",
         "illuminate/html": "^5.0",
         "eventviva/php-image-resize": "1.5.*",
-        "vtalbot/markdown": "2.0",
         "graham-campbell/markdown": "^5.0"
     },
     "require-dev": {
