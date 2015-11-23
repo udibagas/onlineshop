@@ -20,8 +20,8 @@ class Product extends Model
     	return $this->hasMany('App\Discussion');
     }
 
-    // public function user()
-    // {
-    // 	return $this->belongsTo('App\User');
-    // }
+    public function store()
+    {
+    	return $this->belongsTo('App\Store');
+    }
 }

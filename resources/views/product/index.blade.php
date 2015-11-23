@@ -6,27 +6,28 @@
 
 
 	<div class="row">
-		<div class="col-md-9">
-			<div class="row">
-				@foreach ($products as $p)
-				<div class="col-md-3">
-					<div class="thumbnail">
-						<a href="/product/{{ $p->id }}">
-							<img src="/uploads/{{ $p->image }}" alt="{{ $p->name }}">
-						</a>
-						<div class="caption"  style="text-align:center;">
-							<h4><a href="/product/{{ $p->id }}">{{ $p->name }}</a></h4>
-							<h5>{{ $p->price }}</h5>
-							<p><a href="/beli" class="btn btn-success btn-sm" role="button" style="width:100%;">Beli</a></p>
-						</div>
+		<div class="col-md-8">
+			<div class="well">
+				<div class="row">
+					<div class="col-md-6">
+						{!! Form::open(['class' => 'form-inline']) !!}
+						{!! Form::label('order', 'Order By:') !!}
+						{!! Form::select('order', ['price' => 'Price', 'star' => 'Star'], 'price', ['class' => 'form-control']) !!}
+						{!! Form::select('sort', ['asc' => 'ASC', 'desc' => 'DESC'], 'asc', ['class' => 'form-control']) !!}
+						{!! Form::submit('Filter', ['class' => 'btn btn-success']) !!}
+						{!! Form::close() !!}
+					</div>
+					<div class="col-md-6 text-right">
+						<a href="?view=list"><span class="fa fa-list fa-2x"></span></a>&nbsp; 
+						<a href="?view=list1"><span class="fa fa-th fa-2x"></span></a>
 					</div>
 				</div>
-				@endforeach
 			</div>
-			{!! $products->render() !!}
+			
+			@include('product._'.$view)
 		</div>
 
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<div class="alert alert-success">
 				<h3 class="centered">PUT YOUR PRODUCTS HERE!</h3>
 

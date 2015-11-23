@@ -18,10 +18,22 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $view = Request::get('view', 'list1');
+
+        if ($view != 'list' && $view != 'list1') {
+            $view = 'list1';
+        }
+
         return view('product/index', [
-            'products'      => Product::latest()->paginate(16),
+            'products'      => Product::latest()->paginate(4),
             'recommended'   => Product::take(8)->get(),
+            'view'          => $view
         ]);
+    }
+
+    public function list1()
+    {
+        return Product::latest()->paginate(4);
     }
 
     /**
@@ -101,7 +113,7 @@ class ProductController extends Controller
     {
         $product->update($request->all());
 
-        return redirect('product/manage');
+        return redirect('product/'.$product->id);
     }
 
     /**

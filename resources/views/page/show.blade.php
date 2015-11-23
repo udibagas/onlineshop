@@ -5,6 +5,6 @@
 	<h1>{{ $page->title }}</h1>
 	<hr />
 
-	{{ $page->body }}
+	{!! Markdown::convertToHtml($page->body) !!}
 
 @stop

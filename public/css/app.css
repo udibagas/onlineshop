@@ -42,3 +42,28 @@ thead {
 	background-color: #dff0d8;
 	border-top: solid 2px #ddd;
 }
+
+.img-thumbnail, .thumbnail, .well {
+	border-radius: 0;
+}
+
+.text-ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.img-200 {
+	width: 200px;
+}
+
+.thumbnail > a {
+	height: 100px;
+}
+
+.center-cropped {
+  width: auto;
+  height: 120px;
+  background-size: auto 150px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
