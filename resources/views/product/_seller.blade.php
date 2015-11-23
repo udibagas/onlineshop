@@ -4,7 +4,7 @@
 	</div>
 	<table class="table table-striped table-hover">
 		<tbody>
-			<tr><td colspan="2"><h3>Bagas</h3></td></tr>
+			<tr><td colspan="2"><h3><a href="/store/{{ $product->store_id }}">{{ $product->store->name }}</a></h3></td></tr>
 			<tr><td>Email</td><td>: <a href="mailto:udibagas@gmail.com">udibagas@gmail.com</a></td></tr>
 			<tr><td>Phone</td><td>: 085776884114</td></tr>					
 			<tr><td>WA</td><td>: 085776884114</td></tr>					

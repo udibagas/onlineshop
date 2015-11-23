@@ -25,10 +25,19 @@ class StoreRequest extends Request
     public function rules()
     {
         return [
-            'name'          => 'required',
+            'name'          => 'required|max:255',
             'description'   => 'required',
             'address'       => 'required',
-            'email'         => 'email'
+            'email'         => 'email',
+            'tagline'       => 'max:255',
+            'facebook'      => 'url|max:255',
+            'twitter'       => 'url|max:255',
+            'instagram'     => 'url|max:255',
+            'web'           => 'url|max:255',
+            'phone'         => 'max:255',
+            'mobile'        => 'max:255',
+            'bb'            => 'max:255',
+            'wa'            => 'max:255',
         ];
     }
 }

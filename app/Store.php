@@ -10,12 +10,21 @@ class Store extends Model
     	'name', 
     	'description', 
     	'address', 
-    	'phone', 
+    	'phone',
+        'bb',
+        'wa',
     	'email', 
     	'status',
     	'user_id',
     	'lokasi_id',
-    	'tagline'
+    	'tagline',
+        'facebook',
+        'twitter',
+        'instagram',
+        'web',
+        'mobile',
+        'pp',
+        'cover'
     ];
 
     public $statuses = [
@@ -37,6 +46,11 @@ class Store extends Model
     public function products()
     {
         return $this->hasMany('App\Product');
+    }
+
+    public function notes()
+    {
+        return $this->hasMany('App\Note');
     }
 
     // public function getStatusAttribute($value)

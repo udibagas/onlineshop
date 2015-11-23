@@ -40,6 +40,27 @@ class StoreController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->all();
+
+        if ($request->hasFile('img_pp')) {
+            
+            $file = $request->file('img_pp');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['pp'] = $fileName;
+        }
+
+        if ($request->hasFile('img-cover')) {
+            
+            $file = $request->file('img-cover');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['cover'] = $fileName;
+        }
+
         $data['user_id'] = Auth::user()->id;
 
         $store = Store::create($data);
@@ -78,9 +99,31 @@ class StoreController extends Controller
      */
     public function update(StoreRequest $request, Store $store)
     {
-        $store->update($request->all());
+        $data = $request->all();
 
-        return redirect('store');
+        if ($request->hasFile('img_pp')) {
+            
+            $file = $request->file('img_pp');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['pp'] = $fileName;
+        }
+
+        if ($request->hasFile('img_cover')) {
+            
+            $file = $request->file('img_cover');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['cover'] = $fileName;
+        }
+
+        $store->update($data);
+
+        return redirect('store/'.$store->id);
     }
 
     /**

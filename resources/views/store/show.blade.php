@@ -3,49 +3,85 @@
 
 @section('content')
 
-	<h1>{{ $store->name }} <small>-- {{ $store->tagline }}</small></h1>
-	<hr />
-	<blockquote>{!! nl2br($store->description) !!}</blockquote>
-	<hr />
-	<div class="text-muted">
-		<span class="fa fa-home"></span> {!! $store->address !!} |  
-		<a href="/lokasi/{{ $store->lokasi->id }}"><span class="fa fa-map-marker"></span> {{ $store->lokasi->nama }}</a> | 
-		 
-		<span class="fa fa-phone"></span> {{ $store->phone }} | 
-		<span class="fa fa-mobile"></span> {{ $store->phone }} | 
-		<span class="fa fa-envelope-o"></span> <a href="mailto:{{ $store->email }}">{{ $store->email }}</a> | 
-		<span class="fa fa-facebook"></span> {{ $store->phone }} | 
-		<span class="fa fa-twitter"></span> {{ $store->phone }} | 
-		<span class="fa fa-globe"></span> {{ $store->phone }}
+	<div style="background-image: url(/uploads/{{ $store->cover }});background-size:cover;height:300px;">
 	</div>
+	<br />
+
+	@if (Auth::check() && Auth::user()->id == $store->user_id)
+
+		<a href="/store/{{ $store->id }}/edit" class="btn btn-success pull-right">Update Toko</a>
+
+	@endif
+
+	<div class="row">
+		<div class="col-md-2">
+			<img src="/uploads/{{ $store->pp }}" class="img-thumbnail" />
+		</div>
+
+		<div class="col-md-10">
+			<h1>{{ $store->name }} <small>{{ $store->tagline }}</small></h1>
+			<!-- <hr /> -->
+		</div>
+	</div>
+
+	<br />
+	
+	<div class="alert alert-success">
+		<blockquote><i>"{!! nl2br($store->description) !!}"</i></blockquote>
+	</div>
+
+	<!-- <hr /> -->
+
+	<div class="text-muted">
+		<span class="fa fa-home"></span> {{ $store->address }} |  
+		<a href="/lokasi/{{ $store->lokasi->id }}"><span class="fa fa-map-marker"></span> {{ $store->lokasi->nama }}</a><br />
+
+		<span class="fa fa-phone"></span> {{ $store->phone }} | 
+		<span class="fa fa-mobile"></span> {{ $store->mobile }} | 
+		<span class="fa fa-bb"></span> {{ $store->bb }} | 
+		<span class="fa fa-whatsapp"></span> {{ $store->wa }} | 
+		<span class="fa fa-envelope-o"></span> <a href="mailto:{{ $store->email }}">{{ $store->email }}</a><br />
+		
+		<span class="fa fa-facebook"></span> <a href="{{ $store->facebook }}" target="_blank">{{ $store->facebook }}</a> | 
+		<span class="fa fa-twitter"></span> <a href="{{ $store->twitter }}" target="_blank">{{ $store->twitter }}</a> | 
+		<span class="fa fa-instagram"></span> <a href="{{ $store->instagram }}" target="_blank">{{ $store->instagram }}</a> | 
+		<span class="fa fa-globe"></span> <a href="{{ $store->web }}" target="_blank">{{ $store->web }}</a>
+	</div>
+
 	<hr />
 
 	<div class="row">
 		<div class="col-md-4">
+
+			@if (count($store->notes))
+
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h3 class="panel-title">Notes</h3>
 				</div>
-				<ul class="list-group">
-					<li class="list-group-item">Cras justo odio</li>
-					<li class="list-group-item">Dapibus ac facilisis in</li>
-					<li class="list-group-item">Morbi leo risus</li>
-					<li class="list-group-item">Porta ac consectetur ac</li>
-					<li class="list-group-item">Vestibulum at eros</li>
-				</ul>
+				<div class="list-group">
+					@foreach ($store->notes as $n)
+					<a class="list-group-item" href="/note/{{ $n->id }}">{{ $n->title }}</a>
+					@endforeach
+				</div>
 			</div>
+
+			@else
+
+			<a href="/note/create" class="btn btn-success form-control">Create Note</a><br /><br />
+
+			@endif
 
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h3 class="panel-title">Etalase</h3>
 				</div>
-				<ul class="list-group">
-					<li class="list-group-item">Cras justo odio</li>
-					<li class="list-group-item">Dapibus ac facilisis in</li>
-					<li class="list-group-item">Morbi leo risus</li>
-					<li class="list-group-item">Porta ac consectetur ac</li>
-					<li class="list-group-item">Vestibulum at eros</li>
-				</ul>
+				<div class="list-group">
+					<a class="list-group-item" href="#"> Cras justo odio </a>
+					<a class="list-group-item" href="#"> Cras justo odio </a>
+					<a class="list-group-item" href="#"> Cras justo odio </a>
+					<a class="list-group-item" href="#"> Cras justo odio </a>
+				</div>
 			</div>
 			
 
