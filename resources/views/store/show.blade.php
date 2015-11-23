@@ -38,7 +38,7 @@
 
 		<span class="fa fa-phone"></span> {{ $store->phone }} | 
 		<span class="fa fa-mobile"></span> {{ $store->mobile }} | 
-		<span class="fa fa-bb"></span> {{ $store->bb }} | 
+		<span class="fa fa-bb">BBM</span> {{ $store->bb }} | 
 		<span class="fa fa-whatsapp"></span> {{ $store->wa }} | 
 		<span class="fa fa-envelope-o"></span> <a href="mailto:{{ $store->email }}">{{ $store->email }}</a><br />
 		
