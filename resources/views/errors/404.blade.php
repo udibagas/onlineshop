@@ -2,8 +2,8 @@
 
 @section('content')
 
-	<div class="alert alert-danger">
-		<strong>404</strong> - Halaman yang Anda cari tidak ditemukan.
+	<div class="alert alert-danger text-center">
+		<h3>ERROR 404 : Halaman yang Anda cari tidak ditemukan.</h3>
 	</div>
 
 	<div class="row">

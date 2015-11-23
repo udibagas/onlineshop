@@ -53,8 +53,6 @@
 	<div class="row">
 		<div class="col-md-4">
 
-			@if (count($store->notes))
-
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h3 class="panel-title">Notes</h3>
@@ -63,14 +61,9 @@
 					@foreach ($store->notes as $n)
 					<a class="list-group-item" href="/note/{{ $n->id }}">{{ $n->title }}</a>
 					@endforeach
+					<a class="list-group-item" href="/note/create"><i class="fa fa-plus"></i> CREATE NOTE</a>
 				</div>
 			</div>
-
-			@else
-
-			<a href="/note/create" class="btn btn-success form-control">Create Note</a><br /><br />
-
-			@endif
 
 			<div class="panel panel-success">
 				<div class="panel-heading">
