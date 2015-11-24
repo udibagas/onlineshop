@@ -47,4 +47,9 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Note');
     }
 
+    public function etalases()
+    {
+        return $this->hasMany('App\Etalase');
+    }
+
 }

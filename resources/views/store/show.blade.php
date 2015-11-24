@@ -20,7 +20,6 @@
 
 		<div class="col-md-10">
 			<h1>{{ $store->name }} <small>{{ $store->tagline }}</small></h1>
-			<!-- <hr /> -->
 		</div>
 	</div>
 
@@ -29,8 +28,6 @@
 	<div class="alert alert-success">
 		<blockquote><i>"{!! nl2br($store->description) !!}"</i></blockquote>
 	</div>
-
-	<!-- <hr /> -->
 
 	<div class="text-muted">
 		<span class="fa fa-home"></span> {{ $store->address }} |  
@@ -58,10 +55,19 @@
 					<h3 class="panel-title">Notes</h3>
 				</div>
 				<div class="list-group">
+					
 					@foreach ($store->notes as $n)
+					
 					<a class="list-group-item" href="/note/{{ $n->id }}">{{ $n->title }}</a>
+					
 					@endforeach
-					<a class="list-group-item" href="/note/create"><i class="fa fa-plus"></i> CREATE NOTE</a>
+
+					@if (Auth::check() && Auth::user()->id == $store->user_id)
+					
+					<a class="list-group-item list-group-item-danger" href="/note/create"><i class="fa fa-plus"></i> CREATE NOTE</a>
+					
+					@endif
+
 				</div>
 			</div>
 
@@ -70,10 +76,24 @@
 					<h3 class="panel-title">Etalase</h3>
 				</div>
 				<div class="list-group">
-					<a class="list-group-item" href="#"> Cras justo odio </a>
-					<a class="list-group-item" href="#"> Cras justo odio </a>
-					<a class="list-group-item" href="#"> Cras justo odio </a>
-					<a class="list-group-item" href="#"> Cras justo odio </a>
+					
+					@foreach ($store->etalases as $e)
+					
+					<a class="list-group-item" href="/etalase/{{ $e->id }}">
+						
+						<h4 class="list-group-item-heading">{{ $e->name }}<span class="badge pull-right">4</span></h4>
+						<p class="list-group-item-text">{{ $e->description }}</p>
+
+					</a>
+					
+					@endforeach
+
+					@if (Auth::check() && Auth::user()->id == $store->user_id)
+					
+					<a class="list-group-item list-group-item-danger" href="/etalase/create"><i class="fa fa-plus"></i> CREATE ETALASE</a>
+					
+					@endif
+
 				</div>
 			</div>
 			

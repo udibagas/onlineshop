@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Store extends Model
 {
@@ -51,6 +52,11 @@ class Store extends Model
     public function notes()
     {
         return $this->hasMany('App\Note');
+    }
+
+    public function etalases()
+    {
+        return $this->hasMany('App\Etalase');
     }
 
     // public function getStatusAttribute($value)

@@ -35,6 +35,8 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('store', 'App\Store');
         $router->model('user', 'App\User');
         $router->model('lokasi', 'App\Lokasi');
+        $router->model('note', 'App\Note');
+        $router->model('etalase', 'App\Etalase');
 
         // $router->bind('', function() {
         //     return xxx;

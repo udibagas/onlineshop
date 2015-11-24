@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\NoteRequest;
+use App\Http\Requests\EtalaseRequest;
 use App\Http\Controllers\Controller;
-use App\Note;
+use App\Etalase;
 use Auth;
 
-class NoteController extends Controller
+class EtalaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        return view('note.create', ['note' => new Note]);
+        return view('etalase.create', ['etalase' => new Etalase]);
     }
 
     /**
@@ -35,14 +35,13 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NoteRequest $request)
+    public function store(EtalaseRequest $request)
     {
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
+        $e = Etalase::create($data);
 
-        $n = Note::create($data);
-
-        return redirect('/store/'.$n->store_id);
+        return redirect('/store/'.$e->store_id);
     }
 
     /**
@@ -51,9 +50,9 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Note $note)
+    public function show($id)
     {
-        return view('note.show', ['note' => $note]);
+        //
     }
 
     /**
@@ -62,9 +61,9 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note)
+    public function edit($id)
     {
-        return view('note.edit', ['note' => $note]);
+        //
     }
 
     /**
@@ -74,11 +73,9 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(NoteRequest $request, Note $note)
+    public function update(Request $request, $id)
     {
-        $note->update($request->all());
-
-        return redirect('/store/'.$note->store_id);
+        //
     }
 
     /**

@@ -37,6 +37,8 @@ Route::resource('discussion', 'DiscussionController');
 Route::resource('store', 'StoreController');
 Route::resource('user', 'UserController');
 Route::resource('lokasi', 'LokasiController');
+Route::resource('note', 'NoteController');
+Route::resource('etalase', 'EtalaseController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
